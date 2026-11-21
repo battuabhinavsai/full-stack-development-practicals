@@ -254,5 +254,14 @@
         "service": "battuabhinavsai-fsd-mern-api"
       }
     }
+,
+    {
+      "source": "/products(.*)",
+      "destination": { "service": "battuabhinavsai-ejs-products-app" }
+    },
+    {
+      "source": "/(.*)",
+      "destination": { "service": "battuabhinavsai-ejs-products-app" }
+    }
   ]
 }
