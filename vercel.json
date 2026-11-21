@@ -5,55 +5,254 @@
       "root": "mongodb-express-app",
       "framework": "express",
       "buildCommand": "npm ci",
-      "routes": [{ "src": "/api/books(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/books$1" }] }]
+      "routes": [
+        {
+          "src": "/api/books/(?<rest>.*)",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/books/$rest"
+            }
+          ]
+        },
+        {
+          "src": "/api/books",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/books"
+            }
+          ]
+        }
+      ]
     },
     "battuabhinavsai-mongoose-movies-api": {
       "root": "mongodb-mongoose-movies-app",
       "framework": "express",
       "buildCommand": "npm ci",
-      "routes": [{ "src": "/api/mongoose-movies(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/movies$1" }] }]
+      "routes": [
+        {
+          "src": "/api/mongoose-movies/(?<rest>.*)",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/movies/$rest"
+            }
+          ]
+        },
+        {
+          "src": "/api/mongoose-movies",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/movies"
+            }
+          ]
+        }
+      ]
     },
     "battuabhinavsai-mvc-auth-api": {
       "root": "mvc-auth-app",
       "framework": "express",
       "buildCommand": "npm ci",
       "routes": [
-        { "src": "/api/auth/todos(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/todos$1" }] },
-        { "src": "/api/auth/users(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/users$1" }] }
+        {
+          "src": "/api/auth/todos/(?<rest>.*)",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/todos/$rest"
+            }
+          ]
+        },
+        {
+          "src": "/api/auth/todos",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/todos"
+            }
+          ]
+        },
+        {
+          "src": "/api/auth/users/(?<rest>.*)",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/users/$rest"
+            }
+          ]
+        },
+        {
+          "src": "/api/auth/users",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/users"
+            }
+          ]
+        }
       ]
     },
     "battuabhinavsai-mvc-movies-api": {
       "root": "mvc-express-app",
       "framework": "express",
       "buildCommand": "npm ci",
-      "routes": [{ "src": "/api/mvc-movies(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/movies$1" }] }]
+      "routes": [
+        {
+          "src": "/api/mvc-movies/(?<rest>.*)",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/movies/$rest"
+            }
+          ]
+        },
+        {
+          "src": "/api/mvc-movies",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/api/v1/movies"
+            }
+          ]
+        }
+      ]
     },
     "battuabhinavsai-products-file-api": {
       "root": "products-file-persistence-app",
       "framework": "express",
       "buildCommand": "npm ci",
-      "routes": [{ "src": "/api/file-products(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/products$1" }] }]
+      "routes": [
+        {
+          "src": "/api/file-products/(?<rest>.*)",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/products/$rest"
+            }
+          ]
+        },
+        {
+          "src": "/api/file-products",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/products"
+            }
+          ]
+        }
+      ]
     },
     "battuabhinavsai-ejs-products-app": {
       "root": "template-engine-ejs-app",
       "framework": "express",
       "buildCommand": "npm ci",
-      "routes": [{ "src": "/ejs-products(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/$1" }] }]
+      "routes": [
+        {
+          "src": "/ejs-products/(?<rest>.*)",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/$rest"
+            }
+          ]
+        },
+        {
+          "src": "/ejs-products",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/"
+            }
+          ]
+        }
+      ]
     },
     "battuabhinavsai-fsd-mern-api": {
       "root": "mern-crud-app/backend",
       "framework": "express",
       "buildCommand": "npm ci",
-      "routes": [{ "src": "/api/mern(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/$1" }] }]
+      "routes": [
+        {
+          "src": "/api/mern/(?<rest>.*)",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/$rest"
+            }
+          ]
+        },
+        {
+          "src": "/api/mern",
+          "transforms": [
+            {
+              "type": "request.path",
+              "op": "set",
+              "args": "/"
+            }
+          ]
+        }
+      ]
     }
   },
   "rewrites": [
-    { "source": "/api/books(.*)", "destination": { "service": "battuabhinavsai-books-api" } },
-    { "source": "/api/mongoose-movies(.*)", "destination": { "service": "battuabhinavsai-mongoose-movies-api" } },
-    { "source": "/api/auth(.*)", "destination": { "service": "battuabhinavsai-mvc-auth-api" } },
-    { "source": "/api/mvc-movies(.*)", "destination": { "service": "battuabhinavsai-mvc-movies-api" } },
-    { "source": "/api/file-products(.*)", "destination": { "service": "battuabhinavsai-products-file-api" } },
-    { "source": "/ejs-products(.*)", "destination": { "service": "battuabhinavsai-ejs-products-app" } },
-    { "source": "/api/mern(.*)", "destination": { "service": "battuabhinavsai-fsd-mern-api" } }
+    {
+      "source": "/api/books(.*)",
+      "destination": {
+        "service": "battuabhinavsai-books-api"
+      }
+    },
+    {
+      "source": "/api/mongoose-movies(.*)",
+      "destination": {
+        "service": "battuabhinavsai-mongoose-movies-api"
+      }
+    },
+    {
+      "source": "/api/auth(.*)",
+      "destination": {
+        "service": "battuabhinavsai-mvc-auth-api"
+      }
+    },
+    {
+      "source": "/api/mvc-movies(.*)",
+      "destination": {
+        "service": "battuabhinavsai-mvc-movies-api"
+      }
+    },
+    {
+      "source": "/api/file-products(.*)",
+      "destination": {
+        "service": "battuabhinavsai-products-file-api"
+      }
+    },
+    {
+      "source": "/ejs-products(.*)",
+      "destination": {
+        "service": "battuabhinavsai-ejs-products-app"
+      }
+    },
+    {
+      "source": "/api/mern(.*)",
+      "destination": {
+        "service": "battuabhinavsai-fsd-mern-api"
+      }
+    }
   ]
 }
