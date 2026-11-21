@@ -14,7 +14,7 @@ app.use(cors());
 app.use(morgan("dev"));
 
 const port = process.env.PORT || 5000;
-const mongoUri = process.env.MONGO_URI;
+const mongoUri = process.env.MONGO_URI || process.env.MONGODB_URI;
 const dbName = process.env.DB_NAME || "mern_crud_app";
 
 if (!mongoUri) {
