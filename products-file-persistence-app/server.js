@@ -2,8 +2,9 @@ import express from "express";
 import fs from "fs";
 const PORT = process.env.PORT || 5000;
 const app = express();
-
 app.use(express.json());
+app.use((req, res, next) => { req.url = req.url.replace(/^\/api\/file-products(?=\/|\?|$)/, "/products"); next(); });
+
 app.use(express.urlencoded({ parse: true }));
 
 const FILE = "./data/products.json";
