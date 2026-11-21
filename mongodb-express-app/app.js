@@ -34,8 +34,7 @@ try {
 }
 
 // Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());app.use(express.urlencoded({ extended: true }));app.use((req, res, next) => { req.url = req.url.replace(/^\/api\/books(?=\/|\?|$)/, "/api/v1/books"); next(); });
 
 //CRUD API endpoints
 // Create a new book - POST /api/v1/books
