@@ -6,8 +6,9 @@ import morgan from "morgan";
 
 dotenv.config();
 const app = express();
-
 app.use(express.json());
+app.use((req, res, next) => { req.url = req.url.replace(/^\/api\/mern(?=\/|\?|$)/, "") || "/"; next(); });
+
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors());
