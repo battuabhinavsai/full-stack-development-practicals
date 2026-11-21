@@ -8,7 +8,7 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const mongoURI = process.env.MONGO_URI;
+const mongoURI = process.env.MONGO_URI || process.env.MONGODB_URI;
 const dbName = process.env.DB_NAME || "todoDB";
 
 if (!mongoURI) {
