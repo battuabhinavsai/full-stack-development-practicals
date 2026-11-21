@@ -24,6 +24,8 @@ if (!mongoURI) {
 
 await connectDB(mongoURI, dbName);
 const app = express();
+app.use((req, res, next) => { req.url = req.url.replace(/^\/ejs-products(?=\/|\?|$)/, "") || "/"; next(); });
+
 app.use(express.json());
 
 app.set("view engine", "ejs");
