@@ -7,7 +7,7 @@ app.use((req, res, next) => { req.url = req.url.replace(/^\/api\/file-products(?
 
 app.use(express.urlencoded({ parse: true }));
 
-const FILE = "./data/products.json";
+const FILE = new URL("./data/products.json", import.meta.url);
 const readProducts = () => {
   return JSON.parse(fs.readFileSync(FILE, "utf-8"));
 };
