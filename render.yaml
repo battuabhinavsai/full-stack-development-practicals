@@ -82,7 +82,7 @@ services:
     staticPublishPath: dist
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://battuabhinavsai-fsd-mern-api.onrender.com
+        value: https://full-stack-development-practicals.vercel.app/api/mern
     routes:
       - type: rewrite
         source: /*
