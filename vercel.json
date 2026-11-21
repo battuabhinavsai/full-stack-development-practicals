@@ -1,0 +1,59 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "battuabhinavsai-books-api": {
+      "root": "mongodb-express-app",
+      "framework": "express",
+      "buildCommand": "npm ci",
+      "routes": [{ "src": "/api/books(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/books$1" }] }]
+    },
+    "battuabhinavsai-mongoose-movies-api": {
+      "root": "mongodb-mongoose-movies-app",
+      "framework": "express",
+      "buildCommand": "npm ci",
+      "routes": [{ "src": "/api/mongoose-movies(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/movies$1" }] }]
+    },
+    "battuabhinavsai-mvc-auth-api": {
+      "root": "mvc-auth-app",
+      "framework": "express",
+      "buildCommand": "npm ci",
+      "routes": [
+        { "src": "/api/auth/todos(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/todos$1" }] },
+        { "src": "/api/auth/users(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/users$1" }] }
+      ]
+    },
+    "battuabhinavsai-mvc-movies-api": {
+      "root": "mvc-express-app",
+      "framework": "express",
+      "buildCommand": "npm ci",
+      "routes": [{ "src": "/api/mvc-movies(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/api/v1/movies$1" }] }]
+    },
+    "battuabhinavsai-products-file-api": {
+      "root": "products-file-persistence-app",
+      "framework": "express",
+      "buildCommand": "npm ci",
+      "routes": [{ "src": "/api/file-products(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/products$1" }] }]
+    },
+    "battuabhinavsai-ejs-products-app": {
+      "root": "template-engine-ejs-app",
+      "framework": "express",
+      "buildCommand": "npm ci",
+      "routes": [{ "src": "/ejs-products(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/$1" }] }]
+    },
+    "battuabhinavsai-fsd-mern-api": {
+      "root": "mern-crud-app/backend",
+      "framework": "express",
+      "buildCommand": "npm ci",
+      "routes": [{ "src": "/api/mern(.*)", "transforms": [{ "type": "request.path", "op": "set", "args": "/$1" }] }]
+    }
+  },
+  "rewrites": [
+    { "source": "/api/books(.*)", "destination": { "service": "battuabhinavsai-books-api" } },
+    { "source": "/api/mongoose-movies(.*)", "destination": { "service": "battuabhinavsai-mongoose-movies-api" } },
+    { "source": "/api/auth(.*)", "destination": { "service": "battuabhinavsai-mvc-auth-api" } },
+    { "source": "/api/mvc-movies(.*)", "destination": { "service": "battuabhinavsai-mvc-movies-api" } },
+    { "source": "/api/file-products(.*)", "destination": { "service": "battuabhinavsai-products-file-api" } },
+    { "source": "/ejs-products(.*)", "destination": { "service": "battuabhinavsai-ejs-products-app" } },
+    { "source": "/api/mern(.*)", "destination": { "service": "battuabhinavsai-fsd-mern-api" } }
+  ]
+}
