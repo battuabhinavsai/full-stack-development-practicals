@@ -1,0 +1,176 @@
+services:
+  # React frontends: each folder builds to its own static site.
+  - type: web
+    name: battuabhinavsai-react-html-render
+    runtime: static
+    rootDir: react-html-render-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-react-jsx-render
+    runtime: static
+    rootDir: react-jsx-render-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-react-nested-components
+    runtime: static
+    rootDir: react-nested-components-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-react-props-state
+    runtime: static
+    rootDir: react-props-state-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-react-rendering-lists
+    runtime: static
+    rootDir: react-rendering-lists-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-react-state-events
+    runtime: static
+    rootDir: react-state-events-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-react-conditional-rendering
+    runtime: static
+    rootDir: react-conditional-rendering-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-react-form-events
+    runtime: static
+    rootDir: react-form-events-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-react-router
+    runtime: static
+    rootDir: react-router-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  - type: web
+    name: battuabhinavsai-react-expense-tracker
+    runtime: static
+    rootDir: react-frontend-crud-app
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+
+  - type: web
+    name: battuabhinavsai-mern-frontend
+    runtime: static
+    rootDir: mern-crud-app/frontend
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://battuabhinavsai-fsd-mern-api.onrender.com
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
+  # Node.js backends. Free web services sleep when idle and have temporary local storage.
+  - type: web
+    name: battuabhinavsai-books-api
+    runtime: node
+    plan: free
+    rootDir: mongodb-express-app
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: DB_NAME
+        value: library_db
+
+  - type: web
+    name: battuabhinavsai-mongoose-movies-api
+    runtime: node
+    plan: free
+    rootDir: mongodb-mongoose-movies-app
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: MONGO_FULL_URI
+        sync: false
+
+  - type: web
+    name: battuabhinavsai-mvc-auth-api
+    runtime: node
+    plan: free
+    rootDir: mvc-auth-app
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: DB_NAME
+        value: todoDB
+      - key: JWT_SECRET
+        generateValue: true
+
+  - type: web
+    name: battuabhinavsai-mvc-movies-api
+    runtime: node
+    plan: free
+    rootDir: mvc-express-app
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: DB_NAME
+        value: moviesDB
+
+  - type: web
+    name: battuabhinavsai-products-file-api
+    runtime: node
+    plan: free
+    rootDir: products-file-persistence-app
+    buildCommand: npm ci
+    startCommand: npm start
+
+  - type: web
+    name: battuabhinavsai-ejs-products-app
+    runtime: node
+    plan: free
+    rootDir: template-engine-ejs-app
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: DB_NAME
+        value: productsDB
+
+  - type: web
+    name: battuabhinavsai-fsd-mern-api
+    runtime: node
+    plan: free
+    rootDir: mern-crud-app/backend
+    buildCommand: npm ci
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: DB_NAME
+        value: mern_crud_app
