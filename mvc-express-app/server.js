@@ -15,6 +15,8 @@ if (!MONGO_URI) {
 
 const app = express();
 app.use(express.json());
+app.use((req, res, next) => { req.url = req.url.replace(/^\/api\/mvc-movies(?=\/|\?|$)/, "/api/v1/movies"); next(); });
+
 
 //establishing connection with mongodb
 await connectDB(MONGO_URI, DB_NAME);
