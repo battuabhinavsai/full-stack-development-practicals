@@ -9,6 +9,8 @@ import {
   createProductForm,
 } from "./controllers/productController.js";
 import dotenv from "dotenv";
+import { fileURLToPath } from "node:url";
+
 import connectDB from "./config/db.js";
 
 dotenv.config();
@@ -27,8 +29,9 @@ const app = express();
 app.use((req, res, next) => { req.url = req.url.replace(/^\/ejs-products(?=\/|\?|$)/, "") || "/"; next(); });
 
 app.use(express.json());
-
 app.set("view engine", "ejs");
+app.set("views", fileURLToPath(new URL("./views", import.meta.url)));
+
 app.use(express.urlencoded({ extended: true }));
 
 //CRUD operations for products
