@@ -23,6 +23,8 @@ if (!process.env.JWT_SECRET) {
 
 await connectDB(mongoURI, dbName);
 app.use(express.json());
+app.use((req, res, next) => { req.url = req.url.replace(/^\/api\/auth\/(todos|users)(?=\/|\?|$)/, "/api/v1/$1"); next(); });
+
 
 // Routes for todo API
 app.use("/api/v1/todos", todoRoutes);
