@@ -5,7 +5,7 @@ import movieRoutes from "./routes/movieRoutes.js";
 
 dotenv.config();
 const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URI || process.env.MONGODB_URI;
 const DB_NAME = process.env.DB_NAME || "moviesDB";
 
 if (!MONGO_URI) {
