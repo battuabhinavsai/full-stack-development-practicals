@@ -7,7 +7,9 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 //Middleware
-app.use(express.json());const mongoUrl = process.env.MONGO_URI || process.env.MONGO_FULL_URI || process.env.MONGODB_URI;
+app.use(express.json());
+app.use((req, res, next) => { req.url = req.url.replace(/^\/api\/mongoose-movies(?=\/|\?|$)/, "/api/v1/movies"); next(); });
+const mongoUrl = process.env.MONGO_URI || process.env.MONGO_FULL_URI || process.env.MONGODB_URI;
 const dbName = process.env.DB_NAME || "movies_db";
 
 if (!mongoUrl) {
