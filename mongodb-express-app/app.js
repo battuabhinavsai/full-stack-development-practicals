@@ -6,14 +6,14 @@ if (typeof process.loadEnvFile === "function") {
     process.loadEnvFile();
   } catch {
     // .env file is optional (env vars can be passed via process.env directly)
-  }
-}
+  }}
 
 const app = express();
+
 const port = process.env.PORT || 5000;
 
 // MongoDB connection
-const mongoUrl = process.env.MONGO_URI;
+const mongoUrl = process.env.MONGO_URI || process.env.MONGODB_URI;
 const databaseName = process.env.DB_NAME || "library_db";
 
 if (!mongoUrl) {
