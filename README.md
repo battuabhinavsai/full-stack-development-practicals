@@ -1,5 +1,12 @@
 # Full-Stack Development Practicals
 
+## Live demos
+
+- [Products CRUD (Vercel)](https://full-stack-development-practicals.vercel.app/ejs-products)
+- [MERN CRUD (Render)](https://battuabhinavsai-mern-frontend.onrender.com)
+
+
+
 A collection of college practical projects for learning web development with JavaScript, React, Node.js, Express, and MongoDB. Each practical is kept in its own folder so you can study and run it independently.
 
 > These are learning projects. Start with the early React examples, then move through the server and database examples, and finish with the full-stack app.
